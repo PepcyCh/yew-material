@@ -32,6 +32,8 @@ pub struct MatCheckListItem {
 #[derive(Debug, Properties, Clone)]
 pub struct CheckListItemProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub left: bool,
     #[prop_or(GraphicType::Control)]
     pub graphic: GraphicType,
@@ -67,6 +69,7 @@ impl Component for MatCheckListItem {
     fn view(&self) -> Html {
         html! {
             <mwc-check-list-item
+                class=self.props.classes.clone()
                 left=bool_to_option(self.props.left)
                 graphic=self.props.graphic.to_cow_string()
                 disabled=self.props.disabled

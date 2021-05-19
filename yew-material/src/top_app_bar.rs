@@ -40,6 +40,8 @@ pub struct MatTopAppBar {
 /// - [Events](https://github.com/material-components/material-components-web-components/tree/master/packages/top-app-bar#events)
 #[derive(Debug, Properties, Clone)]
 pub struct TopAppBarProps {
+    #[prop_or_default]
+    pub classes: Classes,
     pub children: Children,
     #[prop_or_default]
     pub center_title: bool,
@@ -79,6 +81,7 @@ impl Component for MatTopAppBar {
     fn view(&self) -> Html {
         html! {
             <mwc-top-app-bar
+                class=self.props.classes.clone()
                 centerTitle=bool_to_option(self.props.center_title)
                 dense=bool_to_option(self.props.dense)
                 prominent=bool_to_option(self.props.prominent)

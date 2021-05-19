@@ -21,6 +21,8 @@ loader_hack!(Button);
 /// [MWC Documentation for properties](https://github.com/material-components/material-components-web-components/tree/master/packages/button#propertiesattributes)
 #[derive(Debug, Properties, Clone)]
 pub struct ButtonProps {
+    #[prop_or_default]
+    pub classes: Classes,
     pub label: String,
     #[prop_or_default]
     pub icon: Option<Cow<'static, str>>,
@@ -44,6 +46,7 @@ component!(
     |props: &ButtonProps| {
         html! {
             <mwc-button
+            class=props.classes.clone()
             icon=props.icon.clone()
             label=props.label.clone()
             disabled=props.disabled

@@ -19,6 +19,8 @@ loader_hack!(Formfield);
 /// [MWC Documentation for properties](https://github.com/material-components/material-components-web-components/tree/master/packages/formfield#propertiesattributes)
 #[derive(Properties, Clone)]
 pub struct FormfieldProps {
+    #[prop_or_default]
+    pub classes: Classes,
     pub children: Children,
     #[prop_or_default]
     pub label: Cow<'static, str>,
@@ -36,6 +38,7 @@ component!(
     |props: &FormfieldProps| {
         html! {
             <mwc-formfield
+                class=props.classes.clone()
                 label=props.label.clone()
                 alignEnd=bool_to_option(props.align_end)
                 spaceBetween=bool_to_option(props.space_between)

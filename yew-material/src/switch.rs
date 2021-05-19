@@ -39,6 +39,8 @@ pub struct MatSwitch {
 #[derive(Debug, Properties, Clone)]
 pub struct SwitchProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub checked: bool,
     #[prop_or_default]
     pub disabled: bool,
@@ -73,10 +75,11 @@ impl Component for MatSwitch {
 
     fn view(&self) -> Html {
         html! {
-              <mwc-switch
-                  disabled=self.props.disabled
-                  ref=self.node_ref.clone()
-              ></mwc-switch>
+            <mwc-switch
+                class=self.props.classes.clone()
+                disabled=self.props.disabled
+                ref=self.node_ref.clone()
+            ></mwc-switch>
         }
     }
 

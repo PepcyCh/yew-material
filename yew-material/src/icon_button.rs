@@ -19,6 +19,8 @@ loader_hack!(IconButton);
 #[derive(Debug, Properties, Clone)]
 pub struct IconButtonProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub label: Cow<'static, str>,
     #[prop_or_default]
     pub icon: Cow<'static, str>,
@@ -34,6 +36,7 @@ component!(
     |props: &IconButtonProps| {
         html! {
             <mwc-icon-button
+                class=props.classes.clone()
                 label=props.label.clone()
                 icon=props.icon.clone()
                 disabled=props.disabled

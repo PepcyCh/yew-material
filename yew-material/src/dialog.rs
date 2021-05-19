@@ -59,6 +59,8 @@ pub struct MatDialog {
 #[derive(Properties, Clone)]
 pub struct DialogProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub open: bool,
     #[prop_or_default]
     pub hide_action: bool,
@@ -138,6 +140,7 @@ impl Component for MatDialog {
     fn view(&self) -> Html {
         html! {
         <mwc-dialog
+            class=self.props.classes.clone()
             open=self.props.open
             hideActions=bool_to_option(self.props.hide_action)
             stacked=bool_to_option(self.props.stacked)

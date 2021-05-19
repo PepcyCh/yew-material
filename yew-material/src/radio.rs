@@ -41,6 +41,8 @@ pub struct MatRadio {
 #[derive(Debug, Properties, Clone)]
 pub struct RadioProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub checked: bool,
     #[prop_or_default]
     pub disabled: bool,
@@ -85,14 +87,15 @@ impl Component for MatRadio {
 
     fn view(&self) -> Html {
         html! {
-              <mwc-radio
-                  disabled=self.props.disabled
-                  name=self.props.name.clone()
-                  value=self.props.value.clone()
-                  global=bool_to_option(self.props.global)
-                  reducedTouchTarget=bool_to_option(self.props.reduced_touch_target)
-                  ref=self.node_ref.clone()
-              ></mwc-radio>
+            <mwc-radio
+                class=self.props.classes.clone()
+                disabled=self.props.disabled
+                name=self.props.name.clone()
+                value=self.props.value.clone()
+                global=bool_to_option(self.props.global)
+                reducedTouchTarget=bool_to_option(self.props.reduced_touch_target)
+                ref=self.node_ref.clone()
+            ></mwc-radio>
         }
     }
 

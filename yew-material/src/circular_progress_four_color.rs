@@ -21,6 +21,8 @@ loader_hack!(CircularProgressFourColor);
 #[derive(Debug, Properties, Clone)]
 pub struct CircularProgressFourColorProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub indeterminate: bool,
     #[prop_or_default]
     pub progress: f32,
@@ -36,6 +38,7 @@ component!(
     |props: &CircularProgressFourColorProps| {
         html! {
         <mwc-circular-progress-four-color
+            class=props.classes.clone()
             indeterminate=bool_to_option(props.indeterminate)
             progress=to_option_string(props.progress)
             density=to_option_string(props.density)

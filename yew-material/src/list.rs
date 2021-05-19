@@ -72,6 +72,8 @@ pub struct MatList {
 #[derive(Properties, Clone)]
 pub struct ListProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub activatable: bool,
     #[prop_or_default]
     pub root_tabbable: bool,
@@ -129,6 +131,7 @@ impl Component for MatList {
     fn view(&self) -> Html {
         html! {
             <mwc-list
+                class=self.props.classes.clone()
                 activatable=bool_to_option(self.props.activatable)
                 rootTabbable=bool_to_option(self.props.root_tabbable)
                 multi=bool_to_option(self.props.multi)

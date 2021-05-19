@@ -33,6 +33,8 @@ pub struct MatRadioListItem {
 #[derive(Debug, Properties, Clone)]
 pub struct RadioListItemProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub left: bool,
     #[prop_or_default]
     pub group: Option<Cow<'static, str>>,
@@ -69,6 +71,7 @@ impl Component for MatRadioListItem {
     fn view(&self) -> Html {
         html! {
             <mwc-radio-list-item
+                class=self.props.classes.clone()
                 left=bool_to_option(self.props.left)
                 graphic=self.props.graphic.to_string()
                 group=self.props.group.as_ref().unwrap_or(&Cow::from("null"))

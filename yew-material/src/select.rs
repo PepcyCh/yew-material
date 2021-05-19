@@ -56,6 +56,8 @@ pub struct MatSelect {
 #[derive(Properties, Clone)]
 pub struct Props {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub value: Cow<'static, str>,
     #[prop_or_default]
     pub label: Cow<'static, str>,
@@ -141,6 +143,7 @@ impl Component for MatSelect {
     fn view(&self) -> Html {
         html! {
             <mwc-select
+                class=self.props.classes.clone()
                 value=self.props.value.clone()
                 label=self.props.label.clone()
                 naturalMenuWidth=bool_to_option(self.props.natural_menu_width)

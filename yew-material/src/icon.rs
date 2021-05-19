@@ -17,6 +17,8 @@ loader_hack!(Icon);
 /// [MWC Documentation for properties](https://github.com/material-components/material-components-web-components/tree/master/packages/icon#propertiesattributes)
 #[derive(Debug, Properties, Clone)]
 pub struct IconProps {
+    #[prop_or_default]
+    pub classes: Classes,
     pub children: Children,
 }
 
@@ -25,7 +27,7 @@ component!(
     IconProps,
     |props: &IconProps| {
         html! {
-            <mwc-icon>{ props.children.clone() }</mwc-icon>
+            <mwc-icon class=props.classes.clone()>{ props.children.clone() }</mwc-icon>
         }
     },
     Icon,

@@ -36,6 +36,8 @@ pub struct MatSlider {
 /// - [Events](https://github.com/material-components/material-components-web-components/tree/master/packages/slider#events)
 #[derive(Debug, Properties, Clone)]
 pub struct SliderProps {
+    #[prop_or_default]
+    pub classes: Classes,
     #[prop_or(0)]
     pub value: u32,
     #[prop_or(0)]
@@ -86,6 +88,7 @@ impl Component for MatSlider {
     fn view(&self) -> Html {
         html! {
             <mwc-slider
+                class=self.props.classes.clone()
                 value=to_option_string(self.props.value)
                 min=to_option_string(self.props.min)
                 max=to_option_string(self.props.max)

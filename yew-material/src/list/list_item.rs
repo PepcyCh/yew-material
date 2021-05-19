@@ -33,6 +33,8 @@ pub struct MatListItem {
 #[derive(Debug, Properties, Clone)]
 pub struct ListItemProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub value: Cow<'static, str>,
     #[prop_or_default]
     pub group: bool,
@@ -85,6 +87,7 @@ impl Component for MatListItem {
     fn view(&self) -> Html {
         html! {
             <mwc-list-item
+                class=self.props.classes.clone()
                 value=self.props.value.clone()
                 group=bool_to_option(self.props.group)
                 tabindex=to_option_string(self.props.tabindex)

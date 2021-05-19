@@ -76,6 +76,8 @@ impl TextAreaCharCounter {
 #[derive(Properties, Clone)]
 pub struct TextAreaProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub rows: Option<i64>,
     #[prop_or_default]
     pub cols: Option<i64>,
@@ -158,6 +160,7 @@ impl Component for MatTextArea {
     fn view(&self) -> Html {
         html! {
             <mwc-textarea
+                class=self.props.classes.clone()
                 rows=self.props.rows.map(|v| Cow::from(v.to_string()))
                 cols=self.props.cols.map(|v| Cow::from(v.to_string()))
                 label=self.props.label.clone()

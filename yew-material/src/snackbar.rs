@@ -59,6 +59,8 @@ pub struct MatSnackbar {
 #[derive(Properties, Clone)]
 pub struct SnackbarProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub open: bool,
     #[prop_or(5000)]
     pub timeout_ms: i32,
@@ -136,6 +138,7 @@ impl Component for MatSnackbar {
     fn view(&self) -> Html {
         html! {
             <mwc-snackbar
+                class=self.props.classes.clone()
                 timeoutMs=to_option_string(self.props.timeout_ms)
                 closeOnEscape=to_option_string(self.props.close_on_escape)
                 labelText=self.props.label_text.clone()

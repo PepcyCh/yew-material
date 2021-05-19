@@ -32,6 +32,8 @@ pub struct MatTabBar {
 #[derive(Debug, Properties, Clone)]
 pub struct TabBarProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub active_index: u32,
     /// Binds to `MDCTabBar:activated` event on `mwc-tab`
     ///
@@ -67,6 +69,7 @@ impl Component for MatTabBar {
     fn view(&self) -> Html {
         html! {
             <mwc-tab-bar
+                class=self.props.classes.clone()
                 activeIndex=to_option_string(self.props.active_index)
                 ref=self.node_ref.clone()
             >{ self.props.children.clone() }</mwc-tab-bar>

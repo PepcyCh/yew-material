@@ -33,6 +33,8 @@ pub struct MatTab {
 #[derive(Debug, Properties, Clone)]
 pub struct TabProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub label: Cow<'static, str>,
     #[prop_or_default]
     pub icon: Cow<'static, str>,
@@ -82,6 +84,7 @@ impl Component for MatTab {
     fn view(&self) -> Html {
         html! {
             <mwc-tab
+                class=self.props.classes.clone()
                 label=self.props.label.clone()
                 icon=self.props.icon.clone()
                 hasImageIcon=bool_to_option(self.props.has_image_icon)

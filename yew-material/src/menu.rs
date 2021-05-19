@@ -66,6 +66,8 @@ pub struct MenuProps {
     /// For general usage, consider using `show` method provided by
     /// `WeakComponentLink<MatMenu>` via `menu_link`
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub open: bool,
     #[prop_or_default]
     pub anchor: Option<web_sys::HtmlElement>,
@@ -160,6 +162,7 @@ impl Component for MatMenu {
     fn view(&self) -> Html {
         html! {
             <mwc-menu
+                class=self.props.classes.clone()
                 open=self.props.open
                 corner=to_option_string(self.props.corner.to_string())
                 menuCorner=to_option_string(self.props.menu_corner.to_string())

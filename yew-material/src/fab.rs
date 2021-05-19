@@ -20,6 +20,8 @@ loader_hack!(Fab);
 #[derive(Debug, Properties, Clone)]
 pub struct FabProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub icon: Cow<'static, str>,
     #[prop_or_default]
     pub label: Cow<'static, str>,
@@ -41,6 +43,7 @@ component!(
     |props: &FabProps| {
         html! {
             <mwc-fab
+                class=props.classes.clone()
                 label=props.label.clone()
                 icon=props.icon.clone()
                 mini=bool_to_option(props.mini)

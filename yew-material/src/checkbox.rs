@@ -41,6 +41,8 @@ pub struct MatCheckbox {
 #[derive(Debug, Properties, Clone)]
 pub struct CheckboxProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub checked: bool,
     #[prop_or_default]
     pub indeterminate: bool,
@@ -82,6 +84,7 @@ impl Component for MatCheckbox {
     fn view(&self) -> Html {
         html! {
               <mwc-checkbox
+                class=self.props.classes.clone()
                   indeterminate=bool_to_option(self.props.indeterminate)
                   disabled=self.props.disabled
                   value=self.props.value.clone()

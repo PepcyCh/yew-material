@@ -57,6 +57,8 @@ pub struct MatTextField {
 #[derive(Properties, Clone)]
 pub struct TextFieldProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub open: bool,
     #[prop_or_default]
     pub value: Cow<'static, str>,
@@ -142,6 +144,7 @@ impl Component for MatTextField {
     fn view(&self) -> Html {
         html! {
             <mwc-textfield
+                class=self.props.classes.clone()
                 open=self.props.open
                 label=self.props.label.clone()
                 placeholder=self.props.placeholder.clone()

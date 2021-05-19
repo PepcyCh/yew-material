@@ -19,6 +19,8 @@ loader_hack!(LinearProgress);
 #[derive(Debug, Properties, Clone)]
 pub struct LinearProgressProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub indeterminate: bool,
     #[prop_or_default]
     pub progress: f32,
@@ -36,6 +38,7 @@ component!(
     |props: &LinearProgressProps| {
         html! {
             <mwc-linear-progress
+                class=props.classes.clone()
                 indeterminate=bool_to_option(props.indeterminate)
                 progress=to_option_string(props.progress)
                 buffer=to_option_string(props.buffer)

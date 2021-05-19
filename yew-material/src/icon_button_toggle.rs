@@ -44,6 +44,8 @@ pub struct MatIconButtonToggle {
 #[derive(Debug, Properties, Clone)]
 pub struct IconButtonToggleProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub on: bool,
     #[prop_or_default]
     pub on_icon: Cow<'static, str>,
@@ -89,6 +91,7 @@ impl Component for MatIconButtonToggle {
     fn view(&self) -> Html {
         html! {
             <mwc-icon-button-toggle
+                class=self.props.classes.clone()
                 on=bool_to_option(self.props.on)
                 onIcon=self.props.on_icon.clone()
                 offIcon=self.props.off_icon.clone()

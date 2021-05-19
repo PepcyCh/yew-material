@@ -55,6 +55,8 @@ pub struct MatDrawer {
 #[derive(Properties, Clone)]
 pub struct DrawerProps {
     #[prop_or_default]
+    pub classes: Classes,
+    #[prop_or_default]
     pub open: bool,
     #[prop_or_default]
     pub has_header: bool,
@@ -101,7 +103,7 @@ impl Component for MatDrawer {
 
     fn view(&self) -> Html {
         html! {
-        <mwc-drawer hasHeader=bool_to_option(self.props.has_header) ref=self.node_ref.clone()>
+        <mwc-drawer class=self.props.classes.clone() hasHeader=bool_to_option(self.props.has_header) ref=self.node_ref.clone()>
             { self.props.children.clone() }
         </mwc-drawer>
                 }
